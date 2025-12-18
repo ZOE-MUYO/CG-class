@@ -1,4 +1,31 @@
-\Assets\font
-\Library
-/Assets/font
-/Library
+# ================= Unity =================
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+MemoryCaptures/
+Assets/font/
+
+
+# Asset meta data should only be ignored when the corresponding asset is also ignored
+!Assets/**/*.meta
+
+# ================= OS =================
+.DS_Store
+Thumbs.db
+
+# ================= IDE =================
+.vscode/
+.vs/
+.idea/
+
+# ================= Others =================
+*.csproj
+*.sln
+*.user
+*.pidb
+*.booproj
+*.svd
