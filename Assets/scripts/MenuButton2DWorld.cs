@@ -4,8 +4,8 @@ using TMPro;
 public class MenuButton2DWorld : MonoBehaviour
 {
     [Header("Renderers")]
-    public SpriteRenderer[] shapes;   // 底部方块+圆
-    public TMP_Text label;            // 文字
+    public SpriteRenderer[] shapes;   // 方块 / 圆
+    public TMP_Text label;            // TextMeshPro
 
     [Header("Colors")]
     public Color normalShapeColor = Color.white;
@@ -13,17 +13,15 @@ public class MenuButton2DWorld : MonoBehaviour
     public Color selectedShapeColor = new Color(0.6f, 0.3f, 0.8f);
     public Color selectedTextColor = Color.white;
 
-    [Header("Scale")]
-    public float normalScale = 1f;
-    public float selectedScale = 1.15f;
-
     [Header("Neighbor Buttons")]
     public MenuButton2DWorld up;
     public MenuButton2DWorld down;
     public MenuButton2DWorld left;
     public MenuButton2DWorld right;
 
-    // 去掉 TextEdgeWaveSmooth
+    [Header("Scene Name (按 Enter 跳转)")]
+    public string sceneName;
+
     void Awake()
     {
         SetSelected(false);
@@ -31,11 +29,18 @@ public class MenuButton2DWorld : MonoBehaviour
 
     public void SetSelected(bool selected)
     {
-        foreach (var r in shapes)
-            r.color = selected ? selectedShapeColor : normalShapeColor;
+        if (shapes != null)
+        {
+            foreach (var r in shapes)
+            {
+                if (r != null)
+                    r.color = selected ? selectedShapeColor : normalShapeColor;
+            }
+        }
 
-        label.color = selected ? selectedTextColor : normalTextColor;
-
-        transform.localScale = Vector3.one * (selected ? selectedScale : normalScale);
+        if (label != null)
+        {
+            label.color = selected ? selectedTextColor : normalTextColor;
+        }
     }
 }
